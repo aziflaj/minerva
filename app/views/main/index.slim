@@ -1,0 +1,9 @@
+h1
+  | Hello from 
+  = @project
+p
+  |  My children are called:
+  ul
+    - @children.each do |child|
+      li
+        = child
