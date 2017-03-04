@@ -3,11 +3,10 @@ require 'yaml'
 # create the DB if not yet created
 db_config_file = File.join(File.dirname(__FILE__),'..', 'config', 'database.yml')
 if File.exist?(db_config_file)
-  config = YAML.load(File.read(db_config_file))
-  puts ENV['RACK_ENV']
   if ENV['RACK_ENV'] == 'production'
-    DB = Sequel.connect(config['production']['url'])
+    DB = Sequel.connect(ENV['DATABASE_URL'])
   else
+    config = YAML.load(File.read(db_config_file))
     DB = Sequel.connect(config['development'])
   end
   Sequel.extension :migration

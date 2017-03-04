@@ -1,6 +1,2 @@
-development:
-  adapter: sqlite
-  database: "./db/dev.sqlite3"
-
-production:
-  url: <%= ENV['DATABASE_URL'] %>
+adapter: sqlite
+database: "./db/dev.sqlite3"
