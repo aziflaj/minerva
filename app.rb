@@ -18,5 +18,18 @@ class App
     def root
       File.dirname(__FILE__)
     end
+
+    def env
+      case ENV['RACK_ENV']
+      when 'production'
+        'production'
+      else
+        'development'
+      end
+    end
+
+    def production?
+      App.env == 'production'
+    end
   end
 end
