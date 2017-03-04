@@ -6,7 +6,7 @@ if File.exist?(db_config_file)
   config = YAML.load(File.read(db_config_file))
   puts ENV['RACK_ENV']
   if ENV['RACK_ENV'] == 'production'
-    DB = Sequel.connect(config['production'])
+    DB = Sequel.connect(config['production']['url'])
   else
     DB = Sequel.connect(config['development'])
   end

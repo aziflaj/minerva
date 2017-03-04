@@ -3,5 +3,4 @@ development:
   database: "./db/dev.sqlite3"
 
 production:
-  adapter: postgres
   url: <%= ENV['DATABASE_URL'] %>
