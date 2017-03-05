@@ -6,6 +6,7 @@ ruby '2.4.0'
 gem 'rack'
 gem 'puma'
 gem 'slim'
+gem 'tilt'
 gem 'sequel'
 
 group :development, :test do

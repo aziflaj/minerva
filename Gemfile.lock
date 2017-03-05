@@ -28,6 +28,7 @@ DEPENDENCIES
   sequel
   slim
   sqlite3
+  tilt
 
 RUBY VERSION
    ruby 2.4.0p0
