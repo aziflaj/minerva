@@ -1,4 +1,5 @@
 class Controller
+  include View
   attr_reader :name, :action
   attr_accessor :status, :headers, :content
 
@@ -11,12 +12,8 @@ class Controller
     send(action)
     self.status = 200
     self.headers = { 'Content-Type' => 'text/html' }
-    self.content = [template.render(self)]
+    self.content = [render(self)]
     self
-  end
-
-  def template
-    Tilt.new(File.join(App.root, 'app', 'views', name.to_s, "#{action}.html.erb"))
   end
 
   def not_found

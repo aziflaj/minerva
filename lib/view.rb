@@ -1,14 +1,11 @@
 require 'tilt/erb'
 
 module View
-  def render(view: nil, base_template: nil)
-    templates = [base_template, view]
-    templates.inject(nil) do |prev, temp|
-      _render(temp) { prev }
+  def render(context)
+    layout = Tilt.new(File.join(App.root, 'app', 'views', 'layout', 'application.html.erb'))
+    layout.render(context) do
+      Tilt.new(File.join(App.root, 'app', 'views', context.name.to_s, "#{context.action}.html.erb"))
+          .render(context)
     end
-  end
-
-  def _render(&block)
-    ERB.new(temp).result(binding)
   end
 end

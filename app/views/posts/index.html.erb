@@ -1,0 +1,6 @@
+<% @posts.each do |post| %>
+  <h3><%= post.title %></h3>
+  <div class="post__brief">
+    <%= post.content %>
+  </div>
+<% end %>
