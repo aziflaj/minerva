@@ -1,0 +1,10 @@
+<h1>Hello from <%= @project %></h1>
+
+<p>
+  My children are called:
+  <ul>
+    <% @children.each do |child| %>
+      <li><%= child %></li>
+    <% end %>
+  </ul>
+</p>

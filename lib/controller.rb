@@ -1,5 +1,4 @@
 class Controller
-  # include View
   attr_reader :name, :action
   attr_accessor :status, :headers, :content
 
@@ -17,10 +16,7 @@ class Controller
   end
 
   def template
-    # base_template = File.read(File.join(App.root, 'app', 'views', 'layout', 'application.erb'))
-    # view = File.read(File.join(App.root, 'app', 'views', "#{name}", "#{action}.erb"))
-    # render(view: view, base_template: base_template)
-    Slim::Template.new(File.join(App.root, 'app', 'views', "#{name}", "#{action}.slim"))
+    Tilt.new(File.join(App.root, 'app', 'views', name.to_s, "#{action}.html.erb"))
   end
 
   def not_found
