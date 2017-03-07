@@ -1,3 +1,3 @@
 # Minerva
 
-Simple and basic MVC framework in Ruby
+Very basic MVC framework written in Ruby Edit
