@@ -4,5 +4,5 @@ end
 
 guard 'rack' do
   watch 'Gemfile.lock'
-  watch /app\.*/
+  watch /(app|config)\.*/
 end

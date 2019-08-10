@@ -1,5 +1,5 @@
 class Router
-  attr_reader :routes
+  attr_reader :routes, :request
 
   def initialize(routes)
     @routes = routes
@@ -16,12 +16,11 @@ class Router
 
   private
 
-  attr_reader :request
-
   def route_request(env)
     path = env['REQUEST_PATH']
     match = routes.find { |k, _| Regexp.new("^#{k}$").match? path }
-    ctrl(match.last).call if match # call the controller method if the path matches one of the routes
+    return ctrl(match.last).call if match # call the errors method if the path matches one of the routes
+
     Controller.new.not_found
   end
 

@@ -8,4 +8,8 @@ module View
           .render(context)
     end
   end
+
+  def render_error(code)
+    Tilt.new(File.join(App.root, 'app', 'views', 'errors', "#{code}.haml")).render
+  end
 end

@@ -4,7 +4,9 @@ class PostsController < Controller
   end
 
   def show
-    @post = Post[1] # TODO: Remove magic 1
+    id = request.env['REQUEST_URI'].split('/').last
+    @post = Post[id]
+    raise Errors::RecordNotFound unless @post
   end
 
   def new
@@ -14,9 +16,9 @@ class PostsController < Controller
     post = Post.new(post_params)
     if post.valid?
       post.save
-      # TODO: send to new post view
+      redirect_to "/posts/#{post.id}"
     else
-      # TODO: redirect back with flash message
+      redirect_to '/posts' # TODO: add a flash message
     end
   end
 
