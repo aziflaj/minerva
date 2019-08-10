@@ -1,2 +1,4 @@
+.idea
+
 .bundle
 db/*.sqlite3

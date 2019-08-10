@@ -7,14 +7,14 @@ class Router
 
   def resolve(env)
     path = env['REQUEST_PATH']
-    if routes.key?(path)
-      ctrl(routes[path]).call # call the controler's method if the path matches one of the routes
+    if routes.has_key? path
+      ctrl(routes[path]).call # call the controller's method if the path matches one of the routes
     else
       Controller.new.not_found
     end
-  rescue Exception => error
-    puts error.message
-    puts error.backtrace
+  rescue StandardError => e
+    puts e.message
+    puts e.backtrace
     Controller.new.internal_error
   end
 
