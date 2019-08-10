@@ -5,5 +5,6 @@ Very basic MVC framework written in Ruby Edit
 ## How to run
 ```bash
 $ bundle i 
-$ rackup
+$ rackup # prod
+$ bundle exec guard # dev
 ```

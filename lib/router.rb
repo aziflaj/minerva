@@ -6,12 +6,8 @@ class Router
   end
 
   def resolve(env)
-    path = env['REQUEST_PATH']
-    if routes.has_key? path
-      ctrl(routes[path]).call # call the controller's method if the path matches one of the routes
-    else
-      Controller.new.not_found
-    end
+    @request = Rack::Request.new(env)
+    route_request(env)
   rescue StandardError => e
     puts e.message
     puts e.backtrace
@@ -20,9 +16,21 @@ class Router
 
   private
 
-  def ctrl(string)
-    ctrl_name, action_name = string.split('#')
+  attr_reader :request
+
+  def route_request(env)
+    path = env['REQUEST_PATH']
+    match = routes.find { |k, _| Regexp.new("#{k}$").match? path }
+    if match
+      ctrl(match.last).call # call the controller's method if the path matches one of the routes
+    else
+      Controller.new.not_found
+    end
+  end
+
+  def ctrl(route)
+    ctrl_name, action_name = route.split('#')
     klass = Object.const_get "#{ctrl_name.capitalize}Controller"
-    klass.new(name: ctrl_name, action: action_name.to_sym)
+    klass.new(name: ctrl_name, action: action_name.to_sym, request: request)
   end
 end

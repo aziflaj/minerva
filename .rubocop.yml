@@ -97,3 +97,7 @@ Layout/MultilineOperationIndentation:
 # No need for the frozen_string_literal comment everywhere
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+# I don't like empty methods to be in a single line
+Style/EmptyMethod:
+  EnforcedStyle: expanded

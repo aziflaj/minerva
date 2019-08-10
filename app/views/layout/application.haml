@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %meta{content: "width=device-width, initial-scale=1, shrink-to-fit=no", name: "viewport"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{charset: "utf-8"}/
+    %title Minerva
+
+    %link{crossorigin: "anonymous", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", rel: "stylesheet"}/
+
+  %body
+    %nav.navbar.navbar-expand-lg.navbar-dark.text-light.bg-dark
+      %a.navbar-brand{href: "#"} Minerva
+      %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", type: "button"}
+        %span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        %ul.navbar-nav.mr-auto
+          %li.nav-item
+            %a.nav-link{href: "/"}
+              Home
+          %li.nav-item
+            %a.nav-link{href: "/posts"} Posts
+          %li.nav-item
+            %a.nav-link{href: "https://github.com/aziflaj"} Author
+
+    .container
+      = yield
+
+    %script{crossorigin: "anonymous", integrity: "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo", src: "https://code.jquery.com/jquery-3.3.1.slim.min.js"}
+    %script{crossorigin: "anonymous", integrity: "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1", src: "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"}
+    %script{crossorigin: "anonymous", integrity: "sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM", src: "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"}
