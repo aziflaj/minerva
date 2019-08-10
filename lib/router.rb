@@ -20,7 +20,7 @@ class Router
 
   def route_request(env)
     path = env['REQUEST_PATH']
-    match = routes.find { |k, _| Regexp.new("#{k}$").match? path }
+    match = routes.find { |k, _| Regexp.new("^#{k}$").match? path }
     if match
       ctrl(match.last).call # call the controller's method if the path matches one of the routes
     else
