@@ -5,7 +5,7 @@ class App
   attr_reader :router
 
   def initialize
-    @router = Router.new(ROUTES)
+    @router = ROUTER
   end
 
   # Return the result of a web call based on the router resolvers

@@ -16,9 +16,11 @@ end
 # Run all the migrations
 Sequel::Migrator.run(DB, File.join(File.dirname(__FILE__), '..', 'db', 'migrations')) if DB
 
-# require lib/*.rb and app/**/*.rb
+# require lib/*.rb, lib/**/.rb and app/**/*.rb
 Dir[File.join(File.dirname(__FILE__), '*.rb')].each(&method(:require))
+Dir[File.join(File.dirname(__FILE__), '**', '*.rb')].each(&method(:require))
 Dir[File.join(File.dirname(__FILE__), '..', 'app', '**', '*.rb')].each(&method(:require))
 
-# Read the routes specified in the app/routes.yml file
-ROUTES = YAML.safe_load(File.read(File.join(File.dirname(__FILE__), '..', 'config', 'routes.yml')))
+# Read the routes from the app/config/routes.rb
+ROUTER = Router.new
+load File.expand_path('../config/routes.rb', __dir__)
