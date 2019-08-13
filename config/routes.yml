@@ -1,6 +1,0 @@
-'/': 'main#index'
-
-'/posts': 'posts#index'
-'/posts/\d+': 'posts#show'
-'/posts/new': 'posts#new'
-'/posts/create': 'posts#create'
