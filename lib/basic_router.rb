@@ -1,3 +1,4 @@
+require 'pry'
 require_relative 'routes/helpers'
 
 class BasicRouter
@@ -15,6 +16,12 @@ class BasicRouter
     puts e.message
     puts e.backtrace
     Controller.new.internal_error
+  end
+
+  def register(&block)
+    raise 'No routes' unless block_given?
+
+    instance_eval(&block)
   end
 
   private

@@ -22,5 +22,5 @@ Dir[File.join(File.dirname(__FILE__), '**', '*.rb')].each(&method(:require))
 Dir[File.join(File.dirname(__FILE__), '..', 'app', '**', '*.rb')].each(&method(:require))
 
 # Read the routes from the app/config/routes.rb
-ROUTER = Router.new
+Router = BasicRouter.new
 load File.expand_path('../config/routes.rb', __dir__)

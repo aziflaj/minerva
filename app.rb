@@ -1,11 +1,11 @@
 require_relative 'lib/boot'
-require_relative 'lib/router'
+require_relative 'lib/basic_router'
 
 class App
   attr_reader :router
 
   def initialize
-    @router = ROUTER
+    @router = Router
   end
 
   # Return the result of a web call based on the router resolvers
