@@ -1,6 +1,6 @@
 require_relative 'routes/helpers'
 
-class Router
+class BasicRouter
   include Routes::Helpers
   attr_reader :routes, :request
 
@@ -15,10 +15,6 @@ class Router
     puts e.message
     puts e.backtrace
     Controller.new.internal_error
-  end
-
-  def register
-    yield self
   end
 
   private
