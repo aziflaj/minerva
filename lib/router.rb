@@ -1,4 +1,7 @@
+require_relative 'routes/helpers'
+
 class Router
+  include Routes::Helpers
   attr_reader :routes, :request
 
   def initialize
@@ -18,25 +21,6 @@ class Router
     yield self
   end
 
-  def root(controller_action)
-    controller, action = controller_action.split('#')
-    @routes << { path: '/', controller: controller, action: action, method: 'GET' }
-  end
-
-  def get(path, options = {})
-    raise Errors::BadRouteConfig, "#{path} is invalid" if options.empty?
-
-    controller, action = options[:to].split('#')
-    @routes << { path: path, controller: controller, action: action, method: 'GET' }
-  end
-
-  def post(path, options = {})
-    raise Errors::BadRouteConfig, "#{path} is invalid" if options.empty?
-
-    controller, action = options[:to].split('#')
-    @routes << { path: path, controller: controller, action: action, method: 'POST' }
-  end
-
   private
 
   def route_request(env)
@@ -51,6 +35,15 @@ class Router
   end
 
   def matched_route(path, method)
+    routes.each do |route|
+      next unless method == route[:method]
+
+      q_keys = route[:path].scan /:\w+/
+      p '#' * 90
+      p route[:path]
+      p q_keys
+      p '#' * 90
+    end
     routes.find { |r| Regexp.new("^#{r[:path]}$").match?(path) && method == r[:method] }
   end
 

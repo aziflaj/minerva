@@ -4,8 +4,7 @@ class PostsController < Controller
   end
 
   def show
-    id = request.env['REQUEST_URI'].split('/').last
-    @post = Post[id]
+    set_post
     raise Errors::RecordNotFound unless @post
   end
 
@@ -22,10 +21,26 @@ class PostsController < Controller
     end
   end
 
+  def edit
+    set_post
+  end
+
+  def update
+    set_post
+    p '#' * 90
+    p @post
+    p '#' * 90
+  end
+
   private
 
   def post_params
     permitted_keys = %w[title content]
     request.params.select { |k, _| permitted_keys.include? k }
+  end
+
+  def set_post
+    id = request.env['REQUEST_URI'].split('/').last
+    @post = Post[id]
   end
 end
