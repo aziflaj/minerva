@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 ruby '2.4.0'
 
 gem 'haml', '~> 5.1', '>= 5.1.2'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 gem 'rack', '>= 2.0.6'
 gem 'sequel', '~> 5.23'
 gem 'tilt', '~> 2.0', '>= 2.0.9'
